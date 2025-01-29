@@ -12,40 +12,87 @@
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
         }
+        
         body {
             background: #1a1a2e;
             color: #e0e0e0;
             text-align: center;
             padding: 50px 20px;
         }
+        
         .container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 40px;
             max-width: 1200px;
             margin: auto;
+            justify-content: center;
+            align-items: stretch; /* Ensure equal height */
         }
+        
+        /* All sections same height & flexible layout */
         .section {
             background: #16213e;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
+        
+        /* Center images and GIFs */
+        .image-container, .gif-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        /* Ensure images/GIFs are centered */
+        .image-container img, .gif-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Prevents them from being too large */
+            border-radius: 10px;
+        }
+        
+        /* Make buttons align at the bottom */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            margin-top: auto; /* Pushes buttons to the bottom */
+        }
+        
+        /* Tower of Hanoi centered and full width */
+        .section:nth-child(3) {
+            grid-column: span 2;
+            justify-self: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        
         h1 {
             font-size: 2.5rem;
             font-weight: 600;
             margin-bottom: 20px;
         }
+        
         h2 {
             font-size: 2rem;
             font-weight: 400;
             margin-bottom: 15px;
             color: #00adb5;
         }
+        
         p {
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            flex-grow: 1; /* Allows text to take available space & push buttons down */
         }
+        
         .btn {
             text-decoration: none;
             background: #00adb5;
@@ -56,37 +103,28 @@
             font-weight: 600;
             transition: all 0.3s ease;
             display: inline-block;
-            margin-bottom: 10px;
             width: 100%;
+            text-align: center;
         }
+        
         .btn:hover {
             transform: translateY(-5px);
             background: #393e46;
         }
+        
         .footer {
             margin-top: 50px;
             font-size: 1rem;
         }
-        video {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .image-container img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-        @media (max-width: 768px) {
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
             .container {
                 grid-template-columns: 1fr;
+            }
+            .section:nth-child(3) {
+                grid-column: auto;
+                max-width: 100%;
             }
         }
     </style>
@@ -108,14 +146,16 @@
         
         <div class="section">
             <h2>Fibonacci Series</h2>
-            <p>In mathematics, the Fibonacci sequence is a sequence in which each element is the sum of the two elements that precede it. Starting from 0 and 1, the sequence begins
+            <p>Fibonacci sequence is a sequence in which each element is the sum of the two elements that precede it. Starting from 0 and 1, the sequence begins
 
-                0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...</p>
+                0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...</p>
             <div class="buttons">
                 <a href="Fibonacci Game\Fibonacci_index.html" class="btn">Fibonacci Game</a>
                 <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence" target="_blank" class="btn">Learn More</a>
             </div>
-            <img src="Fibonacci.gif" alt="Fibonacci's Algorithm Animation" style="width: 300px; height: 200px; margin-top: 20px;">
+            <div class="image-container">
+                <img src="Fibonacci.gif" alt="Fibonacci's Algorithm Animation" style="width: 300px; height: 180px; margin-top: 20px;">
+            </div>
         </div>
 
         <div class="section">
